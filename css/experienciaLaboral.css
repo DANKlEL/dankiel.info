@@ -1,0 +1,97 @@
+.experiencia-laboral-section {
+    background-color: #000000;
+    padding: 50px;
+    color: white;
+}
+
+.laboral-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.laboral-item {
+    position: relative;
+    width: 48%; /* Dos iframes lado a lado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.laboral-item h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.laboral-item iframe {
+    width: 100%;
+    height: 500px; /* Aumentado de 300px a 500px */
+    border: none;
+    margin-bottom: 20px;
+}
+
+.carousel-button {
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.carousel-button.prev {
+    left: -30px;
+}
+
+.carousel-button.next {
+    right: -30px;
+}
+
+.carousel-button:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* Posicionando la imagen en la esquina inferior izquierda */
+.logo-bottom-left {
+    position: absolute;
+    bottom: -1230px; /* Ajusta este valor para mover la imagen más abajo */
+    left: 40px; /* Ajusta este valor para mover la imagen más a la izquierda o derecha */
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Efecto de hover para la imagen */
+.logo-bottom-left:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Estilos para el cuadro de texto */
+.text-box {
+    position: absolute;
+    bottom: 80px; /* Ajusta para que no se superponga con la imagen */
+    left: 20px;
+    width: 200px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 8px;
+    display: none; /* Oculto por defecto */
+    z-index: 20;
+}
+
+/* Mostrar el cuadro de texto al hacer clic en la imagen */
+.logo-bottom-left:active + .text-box {
+    display: block;
+}
+
