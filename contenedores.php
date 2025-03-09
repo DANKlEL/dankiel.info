@@ -18,27 +18,11 @@
             </div>
         </div>
     </div>
-    
-    <!-- CONTENEDOR 3D DISEÑO (DERECHA) -->
-    <div class="CONTENEDOR-3D-DISENHO">
-        <div id="backgroundVideo"></div>
-        <div class="image-wrapper">
-            <img src="img/Recursos/MESAAPC.png" alt="Mesa PC" class="right-image">
-            <img src="img/Recursos/DANKIELNUBE.png" alt="Dankiel Nube" class="overlay-image">
-        </div>
-    </div>
 </div>
 
-<!-- Nuevos contenedores para Pixel Art -->
-<div class="CONTENEDOR-PIXEL-DISEÑO">
-    <div class="image-wrapper">
-        <img src="img/Recursos/MESAAPC.png" alt="Mesa PC" class="right-image">
-        <img src="img/Recursos/DANKIELNUBE.png" alt="Dankiel Nube" class="overlay-image">
-    </div>
-</div>
-
+<!-- CONTENEDOR PIXEL ART (DERECHA) -->
 <div class="CONTENEDOR-PIXEL-ART">
-    <img src="img/Textos/Pixelvisual.png" alt="Texto Pixel Art" class="small-image" id="imagenPixelArt">
+    <img src="img/Textos/PixelArtvisual.png" alt="Texto Pixel Art" class="small-image" id="imagenPixelArt">
     <div class="carousel">
         <div id="videoPlayerContainerPixelArt">
             <iframe id="playerPixelArt" width="100%" height="100%" src="https://www.youtube.com/embed/1YhCMtuWXYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
