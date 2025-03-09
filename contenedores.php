@@ -16,6 +16,10 @@
                 <input type="range" id="progressBar" min="0" max="100" value="0">
                 <span id="totalTime">0:00</span>
             </div>
+            <!-- Rectángulo de Precio/Información -->
+            <div class="info-rectangle" id="infoRectangle3D">
+                Precio/Información
+            </div>
         </div>
     </div>
 </div>
@@ -37,38 +41,56 @@
             <input type="range" id="progressBarPixelArt" min="0" max="100" value="0">
             <span id="totalTimePixelArt">0:00</span>
         </div>
+        <!-- Rectángulo de Precio/Información -->
+        <div class="info-rectangle" id="infoRectanglePixelArt">
+            Precio/Información
+        </div>
     </div>
 </div>
 
-<!-- Script para el carrusel de Pixel Art -->
 <script>
-    // Lista de videos de Pixel Art
-    const videoUrlsPixelArt = [
-        '1YhCMtuWXYI',
-        'HaEf63Wk1Sc',
-        'ih8asyTq1oQ',
-        'jzdxGmCmB_g'
-    ];
-
-    let currentVideoIndexPixelArt = 0;
-
-    // Función para actualizar el video
-    function updateVideoPixelArt() {
-        const iframe = document.getElementById('playerPixelArt');
-        iframe.src = `https://www.youtube.com/embed/${videoUrlsPixelArt[currentVideoIndexPixelArt]}`;
-    }
-
-    // Eventos para las flechas
-    document.getElementById('nextVideoPixelArt').addEventListener('click', () => {
-        currentVideoIndexPixelArt = (currentVideoIndexPixelArt + 1) % videoUrlsPixelArt.length;
-        updateVideoPixelArt();
+    // Evento para el rectángulo de Precio/Información (3D)
+    document.getElementById('infoRectangle3D').addEventListener('click', () => {
+        Swal.fire({
+            title: '<strong>3D Visualizer</strong>',
+            html: `
+                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioBaseConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</strong></p>
+                <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                    <li>Modelos creados desde cero</li>
+                    <li>100% modelado para usted (Sin reutilización en proyectos ajenos)</li>
+                    <li>Gráficos de primera calidad (renderización con OctaneRender)</li>
+                </ul>
+                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Qué contiene?</strong></p>
+                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                    <li>1. Máximo 3 escenarios/escenas</li>
+                    <li>2. Máximo 2 personajes modelados</li>
+                    <li>3. Efectos visuales en AE ilimitados</li>
+                </ul>
+                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Necesitas más escenarios/personajes?</strong></p>
+                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                    <li>El precio por +1 escenario es de ${window.preciosConvertidos?.precioEscenarioConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
+                    <li>El precio por +1 personaje es de ${window.preciosConvertidos?.precioPersonajeConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
+                </ul>
+            `,
+            icon: 'info',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                popup: 'custom-swal-popup',
+                title: 'custom-swal-title',
+                htmlContainer: 'custom-swal-html',
+                confirmButton: 'custom-swal-button'
+            }
+        });
     });
 
-    document.getElementById('prevVideoPixelArt').addEventListener('click', () => {
-        currentVideoIndexPixelArt = (currentVideoIndexPixelArt - 1 + videoUrlsPixelArt.length) % videoUrlsPixelArt.length;
-        updateVideoPixelArt();
+    // Evento para el rectángulo de Precio/Información (Pixel Art)
+    document.getElementById('infoRectanglePixelArt').addEventListener('click', () => {
+        Swal.fire({
+            title: 'Funciona',
+            text: 'El rectángulo de Pixel Art funciona correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
     });
-
-    // Inicializar el primer video
-    updateVideoPixelArt();
 </script>
