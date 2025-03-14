@@ -87,10 +87,39 @@
     // Evento para el rectángulo de Precio/Información (Pixel Art)
     document.getElementById('infoRectanglePixelArt').addEventListener('click', () => {
         Swal.fire({
-            title: 'Funciona',
-            text: 'El rectángulo de Pixel Art funciona correctamente.',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
+            title: '<strong>PIXEL ART VISUAL</strong>',
+            html: `
+                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioPixelArt64x64Convertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'} (64x64)</strong></p>
+                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioPixelArt128x128Convertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'} (128x128)</strong></p>
+                <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                    <li>Pixel Art creados desde cero</li>
+                    <li>100% diseñado para usted (Sin reutilización en proyectos ajenos)</li>
+                    <li>Los personajes pueden tener cualquier diseño y todo tipo de detalles</li>
+                    <li>Nota: Los objetos son aparte de los escenarios.</li>
+                </ul>
+                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Qué contiene?</strong></p>
+                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                    <li>1. Máximo 1 escenario/escena</li>
+                    <li>2. Máximo 2 personajes</li>
+                    <li>3. Máximo 3 Objetos (Ej: Carro)</li>
+                    <li>4. Efectos visuales en AE ilimitados</li>
+                </ul>
+                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Necesitas más escenarios/personajes/objetos?</strong></p>
+                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                    <li>El precio por +1 escenario es de ${window.preciosConvertidos?.precioPixelArtEscenarioConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
+                    <li>El precio por +1 objeto es de ${window.preciosConvertidos?.precioPixelArtObjetoConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
+                    <li>El precio por +1 personaje es de ${window.preciosConvertidos?.precioPixelArtPersonajeConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
+                </ul>
+            `,
+            icon: 'info',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                popup: 'custom-swal-popup',
+                title: 'custom-swal-title',
+                htmlContainer: 'custom-swal-html',
+                confirmButton: 'custom-swal-button'
+            }
         });
     });
 </script>

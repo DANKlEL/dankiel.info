@@ -35,7 +35,12 @@
         const preciosBase = {
             precioBase3D: 800,
             precioEscenario: 100,
-            precioPersonaje: 150
+            precioPersonaje: 150,
+            precioPixelArt64x64: 600,
+            precioPixelArt128x128: 700,
+            precioPixelArtEscenario: 120,
+            precioPixelArtObjeto: 130,
+            precioPixelArtPersonaje: 150
         };
 
         // Definir monedas por país
@@ -79,13 +84,24 @@
                 precioBaseConvertido: (preciosBase.precioBase3D * tasaCambio).toFixed(2),
                 precioEscenarioConvertido: (preciosBase.precioEscenario * tasaCambio).toFixed(2),
                 precioPersonajeConvertido: (preciosBase.precioPersonaje * tasaCambio).toFixed(2),
+                precioPixelArt64x64Convertido: (preciosBase.precioPixelArt64x64 * tasaCambio).toFixed(2),
+                precioPixelArt128x128Convertido: (preciosBase.precioPixelArt128x128 * tasaCambio).toFixed(2),
+                precioPixelArtEscenarioConvertido: (preciosBase.precioPixelArtEscenario * tasaCambio).toFixed(2),
+                precioPixelArtObjetoConvertido: (preciosBase.precioPixelArtObjeto * tasaCambio).toFixed(2),
+                precioPixelArtPersonajeConvertido: (preciosBase.precioPixelArtPersonaje * tasaCambio).toFixed(2),
                 monedaLocal: monedaLocal
             };
 
-            // Actualizar el rectángulo de información
+            // Actualizar el rectángulo de información (3D)
             const infoRectangle3D = document.getElementById('infoRectangle3D');
             if (infoRectangle3D) {
                 infoRectangle3D.innerHTML = `Precio/Información: ${preciosConvertidos.precioBaseConvertido} ${preciosConvertidos.monedaLocal}`;
+            }
+
+            // Actualizar el rectángulo de información (Pixel Art)
+            const infoRectanglePixelArt = document.getElementById('infoRectanglePixelArt');
+            if (infoRectanglePixelArt) {
+                infoRectanglePixelArt.innerHTML = `Precio/Información: ${preciosConvertidos.precioPixelArt64x64Convertido} ${preciosConvertidos.monedaLocal}`;
             }
 
             // Actualizar el logo del país
@@ -95,7 +111,7 @@
                 logoPaisPequeno.alt = pais;
             }
 
-            // Guardar los precios convertidos para usarlos en el SweetAlert
+            // Guardar los precios convertidos para usarlos en los SweetAlerts
             window.preciosConvertidos = preciosConvertidos;
         }
 
