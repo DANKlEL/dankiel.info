@@ -1,54 +1,152 @@
-<!-- CONTENEDOR 3D VISUAL (IZQUIERDA) -->
-<div class="CONTENEDOR-3D-VISUAL">
-    <div class="left-container">
-        <img src="img/Textos/3Dvisual.png" alt="Texto 3D" class="small-image" id="imagen3D">
-        <div class="carousel">
-            <div id="videoPlayerContainer">
-                <div id="player"></div>
-            </div>
-            <div class="video-controls">
-                <div class="top-controls">
-                    <button id="prevVideo" class="control-button"><i class="fas fa-chevron-left"></i></button>
-                    <button id="playPause" class="control-button"><i class="fas fa-play"></i></button>
-                    <button id="nextVideo" class="control-button"><i class="fas fa-chevron-right"></i></button>
+<!-- Contenedor principal que envuelve todo -->
+<div class="contenedor-general">
+    <!-- Contenedor para 3D y Pixel Art -->
+    <div class="contenedor-superior">
+        <!-- CONTENEDOR 3D VISUAL (IZQUIERDA) -->
+        <div class="CONTENEDOR-3D-VISUAL">
+            <div class="left-container">
+                <img src="img/Textos/3Dvisual.png" alt="Texto 3D" class="small-image" id="imagen3D">
+                <div class="carousel">
+                    <div id="videoPlayerContainer">
+                        <div id="player"></div>
+                    </div>
+                    <div class="video-controls">
+                        <div class="top-controls">
+                            <button id="prevVideo" class="control-button"><i class="fas fa-chevron-left"></i></button>
+                            <button id="playPause" class="control-button"><i class="fas fa-play"></i></button>
+                            <button id="nextVideo" class="control-button"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <span id="currentTime">0:00</span>
+                        <input type="range" id="progressBar" min="0" max="100" value="0">
+                        <span id="totalTime">0:00</span>
+                    </div>
+                    <!-- Rectángulo de Precio/Información -->
+                    <div class="info-rectangle" id="infoRectangle3D">
+                        Precio/Información
+                    </div>
                 </div>
-                <span id="currentTime">0:00</span>
-                <input type="range" id="progressBar" min="0" max="100" value="0">
-                <span id="totalTime">0:00</span>
             </div>
-            <!-- Rectángulo de Precio/Información -->
-            <div class="info-rectangle" id="infoRectangle3D">
-                Precio/Información
+        </div>
+
+        <!-- CONTENEDOR PIXEL ART (DERECHA) -->
+        <div class="CONTENEDOR-PIXEL-ART">
+            <img src="img/Textos/PixelArtvisual.png" alt="Texto Pixel Art" class="small-image" id="imagenPixelArt">
+            <div class="carousel">
+                <div id="videoPlayerContainerPixelArt">
+                    <iframe id="playerPixelArt" width="100%" height="100%" src="https://www.youtube.com/embed/1YhCMtuWXYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-controls">
+                    <div class="top-controls">
+                        <button id="prevVideoPixelArt" class="control-button"><i class="fas fa-chevron-left"></i></button>
+                        <button id="playPausePixelArt" class="control-button"><i class="fas fa-play"></i></button>
+                        <button id="nextVideoPixelArt" class="control-button"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <span id="currentTimePixelArt">0:00</span>
+                    <input type="range" id="progressBarPixelArt" min="0" max="100" value="0">
+                    <span id="totalTimePixelArt">0:00</span>
+                </div>
+                <!-- Rectángulo de Precio/Información -->
+                <div class="info-rectangle" id="infoRectanglePixelArt">
+                    Precio/Información
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- CONTENEDOR PIXEL ART (DERECHA) -->
-<div class="CONTENEDOR-PIXEL-ART">
-    <img src="img/Textos/PixelArtvisual.png" alt="Texto Pixel Art" class="small-image" id="imagenPixelArt">
-    <div class="carousel">
-        <div id="videoPlayerContainerPixelArt">
-            <iframe id="playerPixelArt" width="100%" height="100%" src="https://www.youtube.com/embed/1YhCMtuWXYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- CONTENEDOR RESTO VISUALES -->
+    <div class="CONTENEDOR-RESTO-VISUALES">
+        <div class="menu-lateral">
+            <ul>
+                <li><a href="#" data-tipo="lyric-con-portada">LYRIC VISUAL CON PORTADA</a></li>
+                <li><a href="#" data-tipo="lyric-simple">LYRIC VISUAL SIMPLE</a></li>
+                <li><a href="#" data-tipo="edit-video-clip">EDIT DE VIDEO CLIP</a></li>
+                <li><a href="#" data-tipo="just-visual-concept">JUST VISUAL CONCEPT</a></li>
+                <li><a href="#" data-tipo="amv">AMV</a></li>
+            </ul>
         </div>
-        <div class="video-controls">
-            <div class="top-controls">
-                <button id="prevVideoPixelArt" class="control-button"><i class="fas fa-chevron-left"></i></button>
-                <button id="playPausePixelArt" class="control-button"><i class="fas fa-play"></i></button>
-                <button id="nextVideoPixelArt" class="control-button"><i class="fas fa-chevron-right"></i></button>
+        <div class="contenedor-video">
+            <img src="img/Textos/LyricVisualConPortada.png" alt="Texto Lyric Visual con Portada" class="small-image" id="imagenRestoVisuales">
+            <div class="carousel">
+                <div id="videoPlayerContainerRestoVisuales">
+                    <iframe id="playerRestoVisuales" width="100%" height="100%" src="https://www.youtube.com/embed/ZRV_zPK18Gg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-controls">
+                    <div class="top-controls">
+                        <button id="prevVideoRestoVisuales" class="control-button"><i class="fas fa-chevron-left"></i></button>
+                        <button id="playPauseRestoVisuales" class="control-button"><i class="fas fa-play"></i></button>
+                        <button id="nextVideoRestoVisuales" class="control-button"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <span id="currentTimeRestoVisuales">0:00</span>
+                    <input type="range" id="progressBarRestoVisuales" min="0" max="100" value="0">
+                    <span id="totalTimeRestoVisuales">0:00</span>
+                </div>
+                <!-- Rectángulo de Precio/Información -->
+                <div class="info-rectangle" id="infoRectangleRestoVisuales">
+                    Precio/Información
+                </div>
             </div>
-            <span id="currentTimePixelArt">0:00</span>
-            <input type="range" id="progressBarPixelArt" min="0" max="100" value="0">
-            <span id="totalTimePixelArt">0:00</span>
-        </div>
-        <!-- Rectángulo de Precio/Información -->
-        <div class="info-rectangle" id="infoRectanglePixelArt">
-            Precio/Información
         </div>
     </div>
 </div>
 
 <script>
+    // Listas de videos para cada tipo de visual
+    const videosPorTipo = {
+        'lyric-con-portada': [
+            'ZRV_zPK18Gg',
+            'toA7TAhdJQM',
+            'ABS1KqO6Dro',
+            'azfkhwF1jGw'
+        ],
+        'lyric-simple': [
+            'NyeYJHwbMgw',
+            'x1RprL97HJs'
+        ],
+        'edit-video-clip': [
+            '90OnAT9ELks'
+        ],
+        'just-visual-concept': [
+            '9PfPgOhJJaA'
+        ],
+        'amv': [
+            'aEFW1vrqyBg'
+        ]
+    };
+
+    let currentTipoVisual = 'lyric-con-portada'; // Tipo de visual por defecto
+    let currentVideoIndexRestoVisuales = 0;
+
+    // Función para actualizar el video en el contenedor de resto de visuales
+    function updateVideoRestoVisuales() {
+        const iframe = document.getElementById('playerRestoVisuales');
+        iframe.src = `https://www.youtube.com/embed/${videosPorTipo[currentTipoVisual][currentVideoIndexRestoVisuales]}`;
+    }
+
+    // Eventos para las flechas
+    document.getElementById('nextVideoRestoVisuales').addEventListener('click', () => {
+        currentVideoIndexRestoVisuales = (currentVideoIndexRestoVisuales + 1) % videosPorTipo[currentTipoVisual].length;
+        updateVideoRestoVisuales();
+    });
+
+    document.getElementById('prevVideoRestoVisuales').addEventListener('click', () => {
+        currentVideoIndexRestoVisuales = (currentVideoIndexRestoVisuales - 1 + videosPorTipo[currentTipoVisual].length) % videosPorTipo[currentTipoVisual].length;
+        updateVideoRestoVisuales();
+    });
+
+    // Cambiar el tipo de visual
+    document.querySelectorAll('.menu-lateral a').forEach(enlace => {
+        enlace.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tipo = e.target.getAttribute('data-tipo');
+            currentTipoVisual = tipo;
+            currentVideoIndexRestoVisuales = 0; // Reiniciar el índice del video
+            updateVideoRestoVisuales();
+        });
+    });
+
+    // Inicializar el primer video
+    updateVideoRestoVisuales();
+
     // Evento para el rectángulo de Precio/Información (3D)
     document.getElementById('infoRectangle3D').addEventListener('click', () => {
         Swal.fire({
@@ -87,7 +185,7 @@
     // Evento para el rectángulo de Precio/Información (Pixel Art)
     document.getElementById('infoRectanglePixelArt').addEventListener('click', () => {
         Swal.fire({
-            title: '<strong>PIXEL ART VISUAL</strong>',
+            title: '<strong>Pixel Art Visual</strong>',
             html: `
                 <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioPixelArt64x64Convertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'} (64x64)</strong></p>
                 <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioPixelArt128x128Convertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'} (128x128)</strong></p>
@@ -120,6 +218,16 @@
                 htmlContainer: 'custom-swal-html',
                 confirmButton: 'custom-swal-button'
             }
+        });
+    });
+
+    // Evento para el rectángulo de Precio/Información (Resto de Visuales)
+    document.getElementById('infoRectangleRestoVisuales').addEventListener('click', () => {
+        Swal.fire({
+            title: 'Funciona',
+            text: 'El rectángulo de Resto de Visuales funciona correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
         });
     });
 </script>
