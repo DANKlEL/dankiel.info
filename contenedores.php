@@ -147,87 +147,134 @@
     // Inicializar el primer video
     updateVideoRestoVisuales();
 
-    // Evento para el rectángulo de Precio/Información (3D)
-    document.getElementById('infoRectangle3D').addEventListener('click', () => {
-        Swal.fire({
-            title: '<strong>3D Visualizer</strong>',
-            html: `
-                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioBaseConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</strong></p>
-                <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
-                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
-                    <li>Modelos creados desde cero</li>
-                    <li>100% modelado para usted (Sin reutilización en proyectos ajenos)</li>
-                    <li>Gráficos de primera calidad (renderización con OctaneRender)</li>
-                </ul>
-                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Qué contiene?</strong></p>
-                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
-                    <li>1. Máximo 3 escenarios/escenas</li>
-                    <li>2. Máximo 2 personajes modelados</li>
-                    <li>3. Efectos visuales en AE ilimitados</li>
-                </ul>
-                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Necesitas más escenarios/personajes?</strong></p>
-                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
-                    <li>El precio por +1 escenario es de ${window.preciosConvertidos?.precioEscenarioConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
-                    <li>El precio por +1 personaje es de ${window.preciosConvertidos?.precioPersonajeConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
-                </ul>
-            `,
-            icon: 'info',
-            confirmButtonText: 'Aceptar',
-            customClass: {
-                popup: 'custom-swal-popup',
-                title: 'custom-swal-title',
-                htmlContainer: 'custom-swal-html',
-                confirmButton: 'custom-swal-button'
-            }
-        });
-    });
+    // Función para obtener la tasa de cambio
+    async function getExchangeRate(targetCurrency) {
+        const apiKey = '251289d2e7608397efc03e79'; // Reemplaza con tu clave de API
+        const baseCurrency = 'MXN'; // Moneda base: Pesos Mexicanos
 
-    // Evento para el rectángulo de Precio/Información (Pixel Art)
-    document.getElementById('infoRectanglePixelArt').addEventListener('click', () => {
-        Swal.fire({
-            title: '<strong>Pixel Art Visual</strong>',
-            html: `
-                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioPixelArt64x64Convertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'} (64x64)</strong></p>
-                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${window.preciosConvertidos?.precioPixelArt128x128Convertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'} (128x128)</strong></p>
-                <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
-                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
-                    <li>Pixel Art creados desde cero</li>
-                    <li>100% diseñado para usted (Sin reutilización en proyectos ajenos)</li>
-                    <li>Los personajes pueden tener cualquier diseño y todo tipo de detalles</li>
-                    <li>Nota: Los objetos son aparte de los escenarios.</li>
-                </ul>
-                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Qué contiene?</strong></p>
-                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
-                    <li>1. Máximo 1 escenario/escena</li>
-                    <li>2. Máximo 2 personajes</li>
-                    <li>3. Máximo 3 Objetos (Ej: Carro)</li>
-                    <li>4. Efectos visuales en AE ilimitados</li>
-                </ul>
-                <p style="font-size: 14px; margin: 10px 0;"><strong>¿Necesitas más escenarios/personajes/objetos?</strong></p>
-                <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
-                    <li>El precio por +1 escenario es de ${window.preciosConvertidos?.precioPixelArtEscenarioConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
-                    <li>El precio por +1 objeto es de ${window.preciosConvertidos?.precioPixelArtObjetoConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
-                    <li>El precio por +1 personaje es de ${window.preciosConvertidos?.precioPixelArtPersonajeConvertido || 'N/A'} ${window.preciosConvertidos?.monedaLocal || 'N/A'}</li>
-                </ul>
-            `,
-            icon: 'info',
-            confirmButtonText: 'Aceptar',
-            customClass: {
-                popup: 'custom-swal-popup',
-                title: 'custom-swal-title',
-                htmlContainer: 'custom-swal-html',
-                confirmButton: 'custom-swal-button'
-            }
-        });
-    });
+        const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.conversion_rates && data.conversion_rates[targetCurrency]) {
+            return data.conversion_rates[targetCurrency];
+        } else {
+            throw new Error('No se pudo obtener la tasa de cambio');
+        }
+    }
 
     // Evento para el rectángulo de Precio/Información (Resto de Visuales)
-    document.getElementById('infoRectangleRestoVisuales').addEventListener('click', () => {
+    document.getElementById('infoRectangleRestoVisuales').addEventListener('click', async () => {
+        let precioMXN, detalles;
+
+        // Definir precios en MXN y detalles según el tipo de visual
+        switch (currentTipoVisual) {
+            case 'lyric-con-portada':
+                precioMXN = 300.00;
+                detalles = `
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                    <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                        <li>Incluye la portada del álbum o single como elemento principal del video.</li>
+                        <li>La portada puede ser estática o animada.</li>
+                        <li>Texto de la canción sincronizado con el audio.</li>
+                        <li>Estilo de letras personalizable (fuente, color, tamaño y animación).</li>
+                        <li>Elección de colores y temática acorde al estilo de la canción.</li>
+                        <li>Posibilidad de agregar imágenes adicionales o videos de fondo.</li>
+                        <li>Efectos visuales ilimitados.</li>
+                    </ul>
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>NOTA:</strong> Se permiten hasta 2 revisiones para ajustar detalles finales.</p>
+                `;
+                break;
+            case 'lyric-simple':
+                precioMXN = 100.00;
+                detalles = `
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                    <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                        <li>Fondo visual estático o dinámico.</li>
+                        <li>Texto de la canción sincronizado con el audio.</li>
+                        <li>Estilo de letras personalizable (fuente, color, tamaño y animación).</li>
+                        <li>Elección de colores y temática acorde al estilo de la canción.</li>
+                        <li>Posibilidad de agregar imágenes adicionales o videos de fondo.</li>
+                        <li>Efectos visuales ilimitados.</li>
+                    </ul>
+                `;
+                break;
+            case 'edit-video-clip':
+                precioMXN = 500.00;
+                detalles = `
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                    <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                        <li>Efectos visuales avanzados:</li>
+                        <ul>
+                            <li>Corrección de color profesional (ajuste de tonos, brillo, contraste y saturación).</li>
+                            <li>Corrección de tomas.</li>
+                            <li>Overlays creativos (texturas).</li>
+                            <li>Los efectos más modernos y comerciales.</li>
+                        </ul>
+                        <li>Efectos visuales ilimitados.</li>
+                    </ul>
+                `;
+                break;
+            case 'just-visual-concept':
+                precioMXN = 150.00;
+                detalles = `
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                    <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                        <li>Puede contener o no lyric.</li>
+                        <li>Creación de una atmósfera visual que complemente el estilo y mood de la música.</li>
+                        <li>Transiciones creativas entre escenas (fundidos, cortes rápidos, efectos de distorsión, etc.).</li>
+                        <li>Overlays de luz, sombras y texturas para agregar profundidad.</li>
+                        <li>Uso de imágenes o videos temáticos (naturaleza, ciudad, tecnología, etc.).</li>
+                        <li>Inclusión de logos, marcas de agua o elementos de identidad visual (opcional).</li>
+                        <li>Efectos visuales ilimitados.</li>
+                    </ul>
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>MODELO 3D (OPCIONAL SI SE DESEA INTEGRAR):</strong></p>
+                    <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                        <li>Costo adicional:</li>
+                        <ul>
+                            <li>+1 RENDER 100.00 MXN. (objetos, figuras, escenarios).</li>
+                            <li>+1 RENDER DE PERSONA 300.00 MXN.</li>
+                        </ul>
+                    </ul>
+                `;
+                break;
+            case 'amv':
+                precioMXN = 100.00;
+                detalles = `
+                    <p style="font-size: 14px; margin: 10px 0;"><strong>Detalles:</strong></p>
+                    <ul style="text-align: left; font-size: 14px; margin: 10px 0;">
+                        <li>Cualquier serie (películas, animes, animaciones, etc.).</li>
+                        <li>Se pueden combinar entre varias series.</li>
+                        <li>Efectos visuales ilimitados.</li>
+                    </ul>
+                `;
+                break;
+            default:
+                precioMXN = 0.00;
+                detalles = '';
+        }
+
+        // Obtener la moneda local y la tasa de cambio
+        const monedaLocal = window.preciosConvertidos?.monedaLocal || 'MXN';
+        const tasaCambio = await getExchangeRate(monedaLocal);
+
+        // Convertir el precio a la moneda local
+        const precioConvertido = (precioMXN * tasaCambio).toFixed(2);
+
         Swal.fire({
-            title: 'Funciona',
-            text: 'El rectángulo de Resto de Visuales funciona correctamente.',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
+            title: `<strong>${currentTipoVisual.toUpperCase()}</strong>`,
+            html: `
+                <p style="font-size: 18px; margin: 10px 0;"><strong>PRECIO: ${precioConvertido} ${monedaLocal}</strong></p>
+                ${detalles}
+            `,
+            icon: 'info',
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                popup: 'custom-swal-popup',
+                title: 'custom-swal-title',
+                htmlContainer: 'custom-swal-html',
+                confirmButton: 'custom-swal-button'
+            }
         });
     });
 </script>
